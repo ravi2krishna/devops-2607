@@ -1,0 +1,100 @@
+Class - 1
+==========
+
+    -> What Is DevOps ? 
+
+        -> DevOps is a "Set Of Practices" That Works To "AUTOMATE" and "INTEGRATE"
+        the Process Between "Software Development"(Dev) and "IT Operations"(Ops) Teams.
+
+    -> Development(Dev) Team 
+
+        -> To Build Applications, We Need Roles Like 
+
+            -> Software Architects 
+            -> Software Developers 
+            -> Software Testers 
+            -> etc 
+
+    -> IT Operations(Ops) Team 
+
+        -> To Build Infrastructure, We Need Roles Like 
+
+            -> System Administrator 
+            -> Network Administrator 
+            -> Security Administrator 
+            -> etc 
+
+    
+    -> NOTE: 
+    
+        -> Software Development Team Is Like Chefs - Cooks Food (Build Application)
+
+        -> IT Operations Teams Is Like Hospitality Team - Serve Food (Deploy Application)
+
+
+    -> DevOps Engineer 
+
+        -> DevOps Engineer Will Implement "DevOps Practices" Using "Tools"
+        so that organizations can Build, Test and Deploy Softwares 
+        More "FASTER" & "RELIABLE"
+
+
+    -> A Forward Deployed Engineer (FDE) Works Directly With Customers 
+    To Understand their Business Problems(BA), Build Technical Solutions(Software Engineer),
+    Integrate Systems(REST / Microservices / AI Tools) and Make those Solutions
+    Work In the Customers Real Environment(Cloud & DevOps)
+
+        -> Software Engineering Helps An FDE To Build The Solution 
+
+        -> DevOps Engineering Helps An FDE To Deliver and Operate the Solution in Real Environment 
+
+
+    
+    
+    -> "DevOps Practices"                                   -> "DevOps Tools"
+
+        -> Version Control Systems (VCS)                        -> Git 
+
+            -> For Tracking Code 
+
+            -> Happens Inside Developers Laptop - Local To Individual Developer 
+
+        
+        -> Source Code Management (SCM)                         -> GitHub 
+
+            -> For Storing Multiple Versions Of Code 
+
+            -> Happens Inside Organization Level - Central To All Developers 
+
+        
+        -> Containerization                                     -> Docker 
+
+            -> For Getting Acceleration i.e Making "FASTER"
+
+            -> If Done In Traditional Way Without Containerization - 3 Hours 
+
+            -> If Done In DevOps Way With Containerization - 30 Minutes 
+
+
+        -> Orchestration                                        -> Kubernetes 
+
+            -> For Getting Reliability i.e Making "Always Run" 
+
+            -> If Done In Traditional Way Without Orchestration - Downtime 
+
+            -> If Done In DevOps Way With Orchestration - No Downtime 
+
+                -> RELIABLE Means Running Applications 24 X 7 Without Downtime 
+                (This Happens In Production Environments)  
+
+
+    -> NOTE: Initially When Learning DevOps, We Need To Know 
+
+        -> Development - SDLC (Software Development Life Cycle)
+
+        -> Operations - Command Line Interface (CLI)
+
+        -> Cloud - Networking & Server Management 
+
+
+
