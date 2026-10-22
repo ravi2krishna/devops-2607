@@ -98,3 +98,156 @@ Class - 1
 
 
 
+Class - 2
+==========
+
+    -> DevOps Prerequisites 
+
+
+        -> Application / Project 
+
+            -> SDLC - Software Development Life Cycle 
+
+                -> Requirement -> Design -> Code -> Build -> Test -> Release -> Deploy 
+
+
+        -> Servers (Azure & AWS - Cloud Computing)
+
+            -> Rather than Buying Physical Servers, 
+            We will be Renting Virtual Servers On 
+            Cloud Platforms Like AWS & AZURE for 
+            Cost Effectiveness.
+
+        
+        -> Understanding Of Command Line Interface (CLI)
+
+            -> We are used to working with Graphical User Interface - GUI 
+            i.e Using Screens, Menus & Options To perform some tasks On
+            Computers i.e Create Files / Folders, Install Applications,
+            Opening Applications etc 
+
+            -> Now as a DevOps Engineer, You need to do perform Tasks On 
+            Servers Using CLI i.e Create Files / Folders, Install Applications,
+            Opening Applications etc 
+
+    
+    
+    
+    -> Application / Project 
+
+        -> Any Project Starts With 
+
+            -> Requirement -> Design -> Code -> Build -> Test -> Release -> Deploy
+
+
+    -> Requirement 
+
+        -> The training institute(Digital Learning) requires a Learning Management System (LMS) 
+        to manage students, courses, batches, trainers, attendance, learning materials, assignments, assessments, 
+        and progress tracking through a centralized platform.
+
+        -> The system should provide role-based dashboards for administrators, trainers, and 
+        students, enabling students to access course content, submit assignments, view results, 
+        and track their learning progress online.
+
+        -> Build  Learning Management System (LMS) For training institute(Digital Learning)
+
+            -> https://lms.digitallync.ai/
+
+
+    -> Design 
+
+            -> https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDQUoPWXFKaYqBQbC5tJwbUMYy1FxRXid56E44uloNmILhTjeYSM2lbVMJ&s=10
+
+            -> https://www.sketchappsources.com/resources/source-image/learning-management-system.png
+
+            -> https://s3-alpha.figma.com/hub/file/5585016792/25da91fc-1cae-497a-baa6-c26b29134142-cover.png
+
+        
+        -> Three Tier Application Architecture 
+
+                    -> One thing the "most visited websites" have in common is that they are dynamic websites.
+                    Their development typically involves server-side coding, client-side coding and 
+                    database technology.
+
+                -> Most Popular Applications
+                
+                    -> https://en.wikipedia.org/wiki/Programming_languages_used_in_most_popular_websites
+
+                -> NOTE: Even Our Application Learning Management System will also be having 
+                Three Tier Application Architecture 
+
+                -> https://lms.digitallync.ai/
+
+
+    
+    -> Code 
+
+        -> Developers Will Use "Git" To Track Code and 
+        Eventually "Push Code" To "GitHub"
+
+        -> Code LMS Project 
+
+
+    -> Version Control Systems (VCS)  
+
+        -> Version control / Revision control / Source control
+        is a process that helps to "keep track of changes" made to 
+        files (computer programs, web site files, documents etc)
+
+        -> Advantage Of VCS is Revert Changes To Previous Working Versions, 
+        if there are issues in new version.
+
+        -> Different Versions 
+
+            -> https://notepad-plus-plus.org/downloads/
+
+    
+    -> To Implement Version Control System, We need "Git" Software / Tool 
+
+        -> Git Helps in Tracking Code / Changes In Your Code 
+
+        -> Git Tracks Code in your Laptop
+
+        -> Git will Generate Unique commit id for every change we make 
+
+        -> https://www.sirhow.com/uploads/2023/07/check-gpay-transaction-history-step-4.jpg
+
+        -> Like Transaction ID's == Commit ID's 
+
+    
+    -> All the transactions made will be stored in Database Server, 
+    Similarly all our commit id's are stored in a Repository on Source Code Management(SCM) like a server 
+
+        -> Mobile Phone -> Google Pay -> Bank Server (Transaction ID's)
+
+        -> Laptop -> Git -> GitHub (Commit ID's)
+
+            -> Developer_One -> Laptop -> Uses Git -> Generates Commit ID's 
+
+            -> Developer_Two -> Laptop -> Uses Git -> Generates Commit ID's 
+
+            -> Developer_Three -> Laptop -> Uses Git -> Generates Commit ID's 
+
+
+    
+    -> GitHub 
+
+        -> GitHub provides a platform to store code and it's versions 
+
+        -> GitHub Stores all versions of code in Centralized location (github.com)
+
+
+    
+    -> NOTE: Example of Real World Application 
+
+        -> https://notepad-plus-plus.org/downloads/ - Application
+
+        -> https://github.com/notepad-plus-plus/notepad-plus-plus - Application Code 
+
+        -> https://github.com/notepad-plus-plus/notepad-plus-plus/graphs/contributors?all=1 - Complete History 
+
+        -> https://github.com/notepad-plus-plus/notepad-plus-plus/commits/master/ - Commits 
+
+
+    -> NOTE: Our Goal, We Need Above Capabilities For Our LMS Project 
