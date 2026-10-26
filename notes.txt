@@ -336,3 +336,9 @@ Class - 3
 
 
         -> Developers Will Update Code To GitHub Repository
+
+
+Class - 4
+==========
+
+    -> Implement Developer Git Workflow
