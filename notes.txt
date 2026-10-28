@@ -350,3 +350,117 @@ Class - 5
     -> Implement Developer Git Workflow
 
     
+Class - 6
+==========
+
+        -> Can Customers / Clients Access the Application from GitHub ? 
+
+            -> NO 
+
+        -> We need Servers To Host / To Deploy Applications,
+        So that Customers / Clients Access the Application anywhere from Internet.
+
+        -> Above Activity Requires "Operations" Related Knowledge 
+
+    
+    -> Servers 
+
+        ->  A Server is a "computer system" that provides data or services 
+        to others computers, known as "clients" over a network.
+
+            -> https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg
+
+        -> Laptop / Desktop can be used by only one person at a time.
+
+        -> Servers can be used by Multiple Persons (Clients) at a time 
+
+    
+    -> Physical Server 
+
+        -> Physical Server is hosted on Physical Datacenter / On-prem Datacenter 
+
+    -> Virtual Server / Cloud Server 
+
+        -> Virtual Server / Cloud Server is hosted on Virtual Datacenter / Cloud Datacenter 
+
+    
+    -> NOTE: Any Type Of Server has Components i.e Physical / Virtual / Cloud 
+
+        -> CPU (processor) + RAM (memory) + HDD (Disk) + Network 
+
+        -> Operating System (Linux OS - Ubuntu)
+
+        -> Server Softwares 
+
+            -> Web Server: Hosts Web Pages / Web Applications Over Internet 
+
+                -> Examples: Apache Web Server, Nginx Web Server, IIS Server etc 
+
+            -> Database Server: Hosts Application Data & Transactions 
+
+                -> Examples: MySQL Server, Postgres Server, Oracle DB Server etc 
+
+            -> Email Server: Hosts Email Services, To Send and Receive Emails 
+
+                -> Examples: Postfix Server, SendMail, SendGrid etc 
+
+    
+    -> For Deploying Login Application, We Need Server (Cloud Server To Rent)
+
+    
+    -> Cloud Computing 
+
+        -> Cloud computing is the "on-demand" delivery of "IT resources" 
+        like servers, storage, and software over the "internet" 
+        on a "pay-as-you-go" pricing basis.
+
+        -> In Our Course Will Implement Servers On "AWS" & "AZURE" 
+
+        -> AWS Account Setup - LABS 
+        
+            Visit - https://aws.amazon.com/free
+
+        -> AZURE Account Setup - LABS
+            
+            Visit - https://azure.microsoft.com/en-us/free/
+
+        
+        -> Following Details Required - Cloud Setup
+
+            -> Email ID (Which was not used for AWS / Azure Earlier)
+            -> Mobile Number (Which was not used for AWS / Azure Earlier)
+            -> Unique PAN CARD / AADHAR CARD
+            -> Unique Debit / Credit Card / UPI 
+
+
+    -> Server Setup On AWS Cloud  
+
+        -> Server == AWS EC2 Instance (Instance)
+
+        -> Server will be part of Network 
+
+            Network == AWS Virtual Private Cloud (VPC)
+
+        -> AWS EC2 Instance will be part of AWS Virtual Private Cloud
+
+        -> Firewall 
+
+           -> A firewall is a network security system that monitors and controls 
+           network traffic based on predetermined security rules (protocols)
+
+           -> SSH protocol: Secure Shell Used for remote login, command execution
+
+                -> Port: 22
+
+           -> HTTP protocol: Hypertext Transfer Protocol Used For data exchange on the World Wide Web
+
+                -> Port: 80 
+
+        -> Firewall == AWS Security Group (SG)
+
+    
+    -> To Create / Work With Servers On AWS 
+
+        -> VPC 
+        -> EC2 
+        -> SG 
