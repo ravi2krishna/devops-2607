@@ -464,3 +464,82 @@ Class - 6
         -> VPC 
         -> EC2 
         -> SG 
+
+
+Class - 7
+==========
+
+    -> Create AWS EC2 Instance To Deploy Login Application 
+
+    -> To Connect With A Remote Server, We Need SSH Client Softwares 
+
+    -> SSH Client Software
+
+        -> SSH Client Software helps you connect with remote linux server 
+
+    
+    -> From Web 
+
+        -> https://ssheasy.com/
+
+    
+    -> From Laptop / Desktop 
+
+        -> Install GitBash(*) / Terminal / etc 
+
+        -> Open GitBash 
+
+            -> Navigate To Key Location i.e Downloads 
+
+                -> cd downloads 
+
+            -> SSH Syntax 
+
+                -> chmod 400 identity_key (Read Only Permissions)
+
+                -> chmod 400 2607.pem 
+
+                -> ssh -i identity_key username@public-ip-address 
+
+                -> ssh -i 2607.pem ubuntu@13.201.83.200
+    
+    
+    -> NOTE: We are using Linux Servers, which has only CLI (Command Line Interface)
+
+    -> CLI - Command Line Interface
+
+        -> CLI is a powerful tool for interacting with servers 
+        through "text based commands" 
+
+        -> CLI is very helpful in "Automating Repetitive Tasks"
+
+    
+    -> Hardware & System Softwares (OS) Commands 
+
+        -> CPU / Processor Info 
+
+            -> cat /proc/cpuinfo 
+
+        -> RAM Info 
+
+            -> free -m 
+
+        -> Disk Info
+
+            -> df -h 
+
+        -> Network Info 
+
+            -> ip address 
+
+    -> System Softwares (OS) Commands
+
+        -> uname 
+
+        -> cat /etc/os-release 
+
+    -> Checking Running Processes 
+
+        -> ps -ef 
+        
+        -> htop / top (Type q to quit on keyboard)
