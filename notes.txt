@@ -543,3 +543,72 @@ Class - 7
         -> ps -ef 
         
         -> htop / top (Type q to quit on keyboard)
+
+
+
+Class - 8
+==========
+
+    -> Deploying Login Application 
+
+        -> Check Internally 
+
+            -> Command To Check, Which Port is in use by which Service 
+
+                -> sudo ss -ntpl 
+
+                -> Web Servers run on Port 80 and we don't see port 80 with above command 
+
+        -> Check Externally     
+
+            -> Browse Public IP Address Of Linux Server Created 
+
+                -> This site can’t be reached, indicates No Web Server has been Installed 
+
+    -> Install Web Server Nginx 
+
+        -> sudo apt update -y 
+
+        -> sudo apt install nginx -y 
+
+        -> sudo ss -ntpl 
+
+        -> Browse Public IP Address
+
+    -> How To Host Our Application ?
+
+        -> For Web Servers, we have DocumentRoot i.e location 
+        where web pages will be loaded from /var/www/html 
+
+        -> ls /var/www/html
+
+        -> index page is called Landing Page Of Application 
+
+        -> cat /var/www/html/index.nginx-debian.html
+
+    -> Repository URL: https://github.com/ravi2krishna/login-2607.git
+
+    -> Clone Repository Using CLI 
+
+        -> sudo git clone <url> <destination> 
+
+        -> sudo git clone https://github.com/ravi2krishna/login-2607.git /var/www/html
+
+            -> fatal: destination path '/var/www/html' already exists and is not an empty directory.
+    
+
+        -> not an empty directory, so let's make it empty 
+
+            -> sudo rm -rf /var/www/html
+
+            -> sudo git clone https://github.com/ravi2krishna/login-2607.git /var/www/html
+
+            -> ls /var/www/html
+
+                -> README.md  img_avatar2.png  index.html
+
+        -> Browse Public IP Address
+
+        -> NOTE: Delete Server / Instance Once Lab is Completed
+
+        
