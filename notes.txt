@@ -612,3 +612,50 @@ Class - 8
         -> NOTE: Delete Server / Instance Once Lab is Completed
 
         
+Class - 9
+==========
+
+    -> From DevOps Context, lets work on the Issue Assigned 
+
+        -> https://github.com/ravi2krishna/login-2607/issues/7
+
+    -> Shell Scripting 
+
+        -> A shell script is a computer program, or text file, that contains 
+        a sequence of commands for a Unix-based operating system's shell 
+        (command-line interpreter) to execute automatically. 
+        It functions as a program to "automate repetitive tasks" that a user 
+        would otherwise have to type manually into the terminal one command at a time. 
+
+    
+    -> NOTE: Trying To Connect Web Server Installation & App Deployment 
+
+            -> Installed Nginx - Deployed Login App On - AWS Server
+
+            -> Installed Nginx - Deployed Login App On - Azure Server
+
+            -> Installed Nginx - Deployed Login App On - GCP Server
+
+            -> Installed Nginx - Deployed Login App On - Oracle Server
+
+            -> Installed Nginx - Deployed Login App On - Physical Server
+
+            -> Installed Nginx - Deployed Login App On - VM Ware Virtual Server  
+
+    
+    -> Deployment Script
+
+        -> https://raw.githubusercontent.com/ravi2krishna/login-2607/refs/heads/scripts/deploy.sh
+
+    
+    -> Simply, Download and Execute Scripts 
+
+        -> wget url 
+
+        -> wget https://raw.githubusercontent.com/ravi2krishna/login-2607/refs/heads/scripts/deploy.sh
+
+        -> ls 
+
+        -> sh deploy.sh 
+
+        
