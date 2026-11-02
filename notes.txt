@@ -658,4 +658,134 @@ Class - 9
 
         -> sh deploy.sh 
 
+
+Class - 10
+==========        
+
+    -> Login Project is very simple (It has Frontend Only i.e Static Web Site i.e one index.html page)
+
+        -> https://github.com/ravi2krishna/login-2607/ 
+
+    
+    -> Real World Applications Have Frontend, Backend API's and Database Systems 
+
+    -> Most Popular Applications, Use Three Tier Architecture (Frontend, Backend API's and Database Systems)
+
+        -> https://en.wikipedia.org/wiki/Programming_languages_used_in_most_popular_websites
+
+    -> Our Login Project has no backend and database 
+
+    -> Our Actual Project is LMS Application 
+
+        -> https://lms.digitallync.ai/
+
+        -> LMS Application has Three Tier Architecture
+
+        -> LMS Application Stack 
+
+            -> Database: Postgres 
+
+            -> Backend: Nodejs 
+
+            -> Frontend: Reactjs 
+
+    
+    -> LMS Application Repository         
+
+        -> https://github.com/ravi2krishna/lms-v1.git
+
+    
+    -> NOTE: Try Deploying Above Application Like Login App 
+
+        -> wget https://raw.githubusercontent.com/ravi2krishna/login-2607/refs/heads/scripts/deploy.sh && sh deploy.sh 
+
+        -> Failed: 403 Forbidden
+
+
+    -> Real World Projects Like LMS Application Goes with Following Approach 
+
+        -> Requirement -> Design -> Coding -> Building -> Testing -> Deploying 
+
+
+
+    -> Static Code Analysis - SCA (Testing - White Box Testing -> DevSecOps) 
+
+        -> Static code analysis is the "process" of examining source code, 
+        without executing it to find potential bugs, security vulnerabilities and 
+        quality issues.
+
+        -> Static code analysis can help identify various types of issues, including:
+
+                Syntax errors and typos
+                Unused variables and methods
+                Code duplication
+                Security vulnerabilities (e.g., SQL injection, cross-site scripting)
+                Memory leaks and resource leaks
+                Performance issues
+                Conformance to coding standards and style guidelines (e.g., indentation, naming conventions)
+
+
+        -> NOTE: Later on we as DevOps Engineers Will Setup Automated CI-CD Pipelines
+        in which Static Code Analysis - SCA is one of the Steps 
+
+            -> https://miro.medium.com/v2/resize:fit:700/1*JSnrNQJAnyt8A2OiANfLCA.png
+
+    
+    -> Earlier To Implement "Version Control Process", We Used "Git" Tool 
+
+    -> Earlier To Implement "Source Code Management Process", We Used "GitHub" Tool 
+
+    -> Now To Implement "Static Code Analysis Process", We Will Use "SonarQube" Tool
+
+
+    
+    -> SonarQube
+
+        -> SonarQube is an open-source platform for "continuous" "code quality and security analysis" 
+        that helps developers identify bugs, security vulnerabilities, and code smells in their code. 
+        It integrates with CI/CD pipelines.
+
+        -> https://www.sonarsource.com/products/sonarqube/  
+
+        -> https://assets-eu-01.kc-usercontent.com/ef593040-b591-0198-9506-ed88b30bc023/38955c91-7420-4a34-9640-1aa65cc4ae6c/sonarqube_general_2x.webp?w=1120&h=630&auto=format&fit=crop
+
+
+    -> SonarQube Setup Requires Following Hardware Configuration 
+
+        -> AWS / AZURE
+
+            -> 8 GB RAM - 2 CPU's - 30 GB Storage 
+
+            -> NOTE: SonarQube Works On Port 9000 
+
+                -> Make sure to add port 9000 as part of your Firewall 
+                Security Group(AWS) or Network Security Group(Azure)
+
+
+        -> To Install SonarQube In Traditional Way like a Admin 
+
+            -> https://github.com/ravi2krishna/sonarqube-installation-guide.git - 45 Mins 
+
         
+        -> To Install SonarQube In DevOps Way like a DevOps Engineer 
+
+            -> Will Use Tool Called "Docker"
+
+            -> With Docker We Can Accelerate / Get Faster i.e SonarQube Setups Takes 5 Mins 
+
+
+        -> For SonarQube Installation, We Need Docker 
+
+            docker
+            ls
+            wget -O get-docker.sh https://get.docker.com && sh get-docker.sh
+            ls
+            docker
+
+
+        -> Install SonarQube
+            sudo ss -ntpl
+            sudo docker container run -dt --name sonarqube --restart=always -p 9000:9000 sonarqube
+            sudo ss -ntpl
+
+        -> Browse SonarQube, in Browser with port 9000 -> ip_address:9000 
