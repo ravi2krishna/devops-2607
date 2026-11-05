@@ -1054,3 +1054,94 @@ Class - 12
             -> ls dist 
 
         -> SELECT * FROM "Course";
+
+
+Class - 13
+==========
+
+    -> Project - 1 (LMS Application)
+
+        -> Code -> Build -> Test -> Deploy 
+
+            -> Git & GitHub -> node & npm -> SonarQube -> Servers / Cloud / Linux / CLI 
+    
+    
+    -> NOTE: Next Goal is to Implement "DevOps Practices" On Project - 1 i.e LMS Application
+
+    -> DevOps is a set of PRACTICES that works towards the 
+    "AUTOMATION" and "INTEGRATION" of the processes between 
+    Software Development (Dev) and IT (Ops) teams, 
+    so that organizations can "BUILD", "TEST" and "DEPLOY" 
+    softwares/applications "FASTER" and more "RELIABLE"
+
+    -> DevOps Engineer 
+
+        -> DevOps Engineers will implement DevOps "PRACTICES" Using "TOOLS", 
+        so that organizations can Build, Test & Deploy (Delivery Line) 
+        Softwares More "FASTER" & "RELIABLE".
+
+    
+    -> Project - 1 (LMS Application)
+
+        -> Above Project Took 2-3 Hours To Deploy 
+
+    -> From DevOps Team, Organizations are Looking for Acceleration i.e making 
+    Deployments "FASTER"
+
+    -> From our earlier experience, Using SonarQube Takes 45 mins Traditionally 
+
+        -> We Used Docker got the same thing done is 5 Mins 
+
+    -> Why Shouldn't we apply Docker On Whole Application Process ??? 
+
+            -> Whole Application Process(Project-1) (Dev To Ops) -> Traditionally Took 2-3 Hours 
+
+            -> Whole Application Process(Project-1) (Dev To Ops) -> Docker Takes 5-10 Mins 
+
+    -> How To make Whole Application Process Deployed in 5-10 Mins ??
+
+        -> sudo docker container run -dt --name sonarqube --restart=always -p 9000:9000 sonarqube ???
+
+    -> NOTE: To Accelerate Development & Deployment Process, We use "Containerization" Practice
+
+
+    -> Project - 2 
+
+        -> Implement Acceleration i.e "FASTER" Deployments Using "Containerization" Practice
+
+    
+    -> Containerization
+
+        -> Containerization is one of the practices in devops, which provides 
+
+            -> "Lightweight" and "Efficient" way of running applications 
+            
+            -> Promotes "Faster Deployments" and "Portability" for applications
+
+        -> NOTE: Containerization is implemented by software/tool "DOCKER" 
+
+    
+    -> Container 
+
+        -> An object for holding or transporting something 
+
+            -> https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg
+
+        -> In terms of software development, a container is an object 
+        for holding or transporting(Shipping) applications.
+
+            -> https://cdn.prod.website-files.com/67615512eed3697e5e735df6/67c1d375b94ef6458106170b_vrGMCnHTQY2TKkXLNFbx.jpeg
+
+    
+    -> Monolithic Architecture
+
+        -> https://img.favpng.com/25/1/18/microservices-nginx-monolithic-application-domain-driven-design-reverse-proxy-png-favpng-w2rapqPnDTMhzWnRp1SnfFUvi.jpg
+
+
+    -> Micro Services Architecture
+
+        -> https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ft1ien7stu2l7v1u7mfjl.png
+
+    
+    -> NOTE: As DevOps Engineer, Deploying Micro Sized Applications(Micro Services) 
+    on Containers is our primary work on projects 
