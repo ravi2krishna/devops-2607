@@ -1376,3 +1376,128 @@ Class - 15
             private ips work in Intranet.
 
             -> curl 172.17.0.2
+
+Class - 16
+==========
+
+    -> New Requirement
+
+        -> We Have Ecommerce Application Which Requires a Web Server 
+
+        -> We Have LMS Application Which Requires a Web Server 
+
+        -> We Have CRM Application Which Requires a Web Server 
+    
+    
+    -> NOTE: With Earlier Approach, i might have needed three different Servers 
+
+        -> Server-1: Ecommerce Application On Nginx
+
+        -> Server-2: LMS Application On Nginx
+
+        -> Server-3: CRM Application On Nginx
+
+
+    -> NOTE: With Docker Approach, i might have needed three different Containers  
+
+        -> Container-1: Ecommerce Application On Nginx
+
+        -> Container-2: LMS Application On Nginx
+
+        -> Container-3: CRM Application On Nginx
+
+
+    -> NOTE: With Above Approach, we need to do redundant actions,
+    that is why it's not a good approach for containers.
+
+    -> NOTE: Below Approach is a recommended way for Containers 
+
+    -> GOAL: Deploying Web Applications, For Which We Need Web Server 
+
+    -> Recommended way of creating Containers 
+
+        -> docker container run -dt --name ecommerce nginx 
+
+        -> docker container run -dt --name lms nginx 
+
+        -> docker container run -dt --name crm nginx 
+
+    
+    -> NOTE: Now how can we make Customers access these 
+    Web Applications from Internet ??
+
+    -> To Access Containers Outside network i.e Internet(WWW)
+    we need to understand "Docker Networking"
+
+    -> Docker Supports Following Network Driver, Each designed for 
+    Specific Use Case 
+
+        -> Host Network Driver  
+
+        -> None Network Driver 
+
+        -> Bridge Network Driver (***)
+
+
+    -> Host Network Driver  
+
+        -> The host network driver in Docker "removes network isolation "
+        between a container and its host, allowing the container to 
+        share the host's networking namespace directly.
+
+        -> The container does not get its own IP address; 
+        instead, it uses the host's IP address.
+
+        -> docker container run -dt --name lms --network=host nginx
+
+
+    -> None Network Driver  
+
+        -> The "none" network driver in Docker provides complete 
+        network isolation by disabling all networking for a container.
+
+        -> The container cannot reach external networks
+
+        -> Docker does not assign any IP address to containers using this driver.
+
+        -> docker container run -dt --name hrms --network=none nginx
+
+    
+    -> Bridge Network Driver (***)    
+
+        -> Bridge Network Driver is default network driver for containers. 
+        When a new container is Created, it's attached to the Bridge network.
+
+        -> Using bridge network we can run multiple containers at same time
+        that can reach external networks as well
+
+        -> To allow external access to Containers we use Port Publishing/Forwarding. 
+
+        -> Port Publishing: To make a container service accessible from outside the host
+        you must map a host port to a container port
+
+                -> 32768-61000 -> Docker Pre Defined Range(mandatory)
+                -> 8080-9090   -> User Defined Range(Optional i.e Based On Requirements)
+                -> 3000-5000   -> User Defined Range(Optional i.e Based On Requirements)
+
+            -> For Pre Defined Ports Use -P 
+
+            -> For User Defined Ports Use -p 
+
+        -> docker container run -dt --name lms -P nginx
+
+        -> docker container run -dt --name crm -P nginx
+
+        -> docker container run -dt --name hrms -p 8080:80 nginx
+
+        -> docker container run -dt --name ecomm -p 8085:80 nginx
+
+        -> docker container run -dt --name login --restart=always -p 80:80 nginx
+
+
+    -> docker container run -dt --name sonarqube --restart=always -p 9000:9000 sonarqube
+
+        -> Now We Know What Above Command Does 
+
+        
+
