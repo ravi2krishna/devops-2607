@@ -1804,3 +1804,169 @@ Class - 17
 
         -> NOTE: Now we want "Portability" and "Data" Required for Application to work 
         for this we need Dockerize Applications / Custom Images 
+
+
+Class - 18
+==========
+
+    -> Dockerize Applications / Build Custom Docker Images 
+
+        -> The process of Dockerizing an application involves creating a "Dockerfile" 
+        building a Docker image, and running the application as a Docker container.
+
+        -> Dockerizing an application is the process of converting an application to run
+        within a docker container without any dependencies 
+
+        -> Docker can build custom images automatically by reading instructions from "Dockerfile"
+
+
+    -> Dockerfile 
+
+        -> A Dockerfile is a text document that contains all the commands 
+        a user could call on command line to assemble an image 
+
+        -> NOTE: Dockerfile is the source code for Docker Image 
+
+            -> Nginx Dockerfile - https://github.com/nginx/docker-nginx/blob/71081b25390771f6b1275ddf7c73c965f304493f/mainline/debian/Dockerfile
+
+                -> GitHub Stores Source Code 
+                -> Content(Code) in Dockerfile is nothing but commands to setup Nginx 
+
+    
+    -> Dockerizing an application Requires following flow 
+
+        -> Create Dockerfile with Required Commands / instructions in your project 
+        i.e Your App Repository
+
+        -> Use "docker build" command, to create docker image 
+
+        -> Run the container using the image that we built in Previous Step for Confirmation
+
+        -> https://miro.medium.com/v2/1*eh-tX75FFzQffFhCfCZaMA.png
+
+    
+    -> Dockerizing Login Application
+
+        -> cd ~
+        -> ls 
+        -> git clone https://github.com/ravi2krishna/login-2607.git 
+        -> ls 
+        -> cd ~/login-2607
+        -> ls 
+        -> ls Dockerfile
+        -> Syntax For Building Images
+            -> docker build -t username_docker_hub/custom_image_name . 
+
+        -> Create an account on Docker Hub 
+        -> docker build -t ravi2krishna/login-2607 . 
+            -> ERROR: failed to build: failed to read dockerfile: open Dockerfile: no such file or directory
+        -> ls Dockerfile
+        -> touch Dockerfile
+        -> ls Dockerfile
+        -> docker build -t ravi2krishna/login-2607 . 
+            -> ERROR: failed to build: failed to solve: the Dockerfile cannot be empty
+        
+        -> cat Dockerfile
+            -> yes it's empty, let's keep some content 
+
+        -> cat Dockerfile
+            -> please build login app image for me 
+
+        -> docker build -t ravi2krishna/login-2607 . 
+            -> ERROR: failed to build: failed to solve: dockerfile parse error on line 1: 
+            unknown instruction: please
+
+    -> NOTE: To Build Docker Images, we need to follow Docker Instructions Only 
+
+    -> Docker Instructions / Docker Directives (Upper Case)
+
+        FROM — set base image
+        COPY — copy files to image
+        RUN — execute command in container
+        WORKDIR — set working directory
+        VOLUME — create mount-point for a volume
+        CMD — set executable for container
+        EXPOSE — set port number 
+        ENV — set environment variable
+
+    -> Official Nginx Dockerfile - 
+        https://github.com/nginx/docker-nginx/blob/71081b25390771f6b1275ddf7c73c965f304493f/mainline/debian/Dockerfile
+
+    -> cat Dockerfile
+        # FROM - To Set Base Functionality
+        # FROM ubuntu -> Install Nginx -> Deploy Application Code
+        FROM nginx
+
+    -> docker build -t ravi2krishna/login-2607 . 
+
+    -> docker image ls 
+
+        nginx:latest                     7f0adca1fc6c        240MB         
+        ravi2krishna/login-2607:latest   96fad732dafa        237MB         
+
+    -> cat Dockerfile
+        # means comment, this line will ignored by docker
+
+        # FROM - To set base functionality
+        # FROM ubuntu 
+        FROM nginx
+
+        # COPY - To Copy Files From Host To Above Image
+        COPY . /usr/share/nginx/html
+
+    -> docker build -t ravi2krishna/login-2607 . 
+
+    -> docker image ls
+
+    -> Test the Image Built 
+
+        -> docker container rm -f $(docker container ls -aq)
+        -> docker container ls -a
+        -> docker container run -dt --name login-app -p 8080:80 ravi2krishna/login-2607
+        -> docker container ls -a
+        -> Browse IP with port 8080
+
+    -> NOTE: Currently the custom image is on Host, To get Portability
+    Upload / Push Image To Docker Registry i.e Docker Hub 
+
+        -> docker push ravi2krishna/login-2607
+        -> authorization failed
+
+        -> In Docker Hub, Create a Token like we did in GitHub 
+
+            -> docker login -u ravi2krishna
+            -> paste token 
+            -> docker push ravi2krishna/login-2607
+
+    -> NOTE: To confirm image is built properly and we have Achieved Portability
+    clean up everything in the Host 
+
+        -> docker container rm -f $(docker container ls -aq)
+        -> docker container ls -a
+        -> docker image ls 
+        -> docker image rm -f $(docker image ls -aq)
+        -> docker image ls 
+        -> docker volume ls 
+        -> docker volume rm -f login-volume
+        -> cd ~
+        -> ls 
+        -> rm -rf * 
+        -> ls 
+
+        -> NOTE: With above commands executed the whole system is clean up and 
+        it's like a brand new docker host 
+
+    -> Browse IP with port 8080
+    -> docker container run -dt --name login-app -p 8080:80 ravi2krishna/login-2607
+    -> docker container ls -a
+    -> Browse IP with port 8080
+
+
+
+    -> Docker tags
+
+        -> Docker tags are human-readable aliases used to version and organize images 
+        within a repository. 
+
+        -> The Default Tag: If you do not specify a tag when pulling or building an image, 
+        Docker automatically applies the :latest tag
