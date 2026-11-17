@@ -1970,3 +1970,181 @@ Class - 18
 
         -> The Default Tag: If you do not specify a tag when pulling or building an image, 
         Docker automatically applies the :latest tag
+
+
+Class - 19
+==========
+
+    -> Dockerize LMS Application 
+
+        -> You can Dockerize any three tier architecture application
+
+        -> LMS: Frontend + Backend + Database (Web Server - Nodejs API - Postgres DB)
+
+
+            -> NOTE: Just like LMS App Setup On Server, we will do in Containers 
+
+                -> Setup DB  
+                -> Setup API 
+                -> Setup WebApp  
+
+        -> Setup Postgres Database Using Docker 
+
+                -> docker container run -dt --name lms-db -e POSTGRES_PASSWORD=Login@123 postgres 
+                -> docker container ls -a
+    
+            -> Setup Nodejs Using Docker 
+
+                -> docker container run -dt --name t1 node:20
+                -> docker container ls -a
+                -> docker container exec t1 node -v 
+                -> docker container exec t1 npm -v 
+            
+            -> Steps To Build LMS Backend Image 
+
+                -> ls 
+                -> cd ~
+                -> git clone -b dev https://github.com/ravi2krishna/lms-v1.git
+                -> cd ~/lms-v1/api
+                -> ls 
+                -> vi .env 
+                    MODE=dev
+                    PORT=8080
+                    DATABASE_URL=postgresql://postgres:Login@123@localhost:5432/postgres
+
+                -> docker container inspect lms-db 
+                    
+                    -> Update IP of lms-db Container in .env file 
+                    MODE=dev
+                    PORT=8080
+                    DATABASE_URL=postgresql://postgres:Login@123@172.17.0.2:5432/postgres
+                
+                -> Remove Docker File (existing) 
+                    -> rm Dockerfile 
+                    -> ls Dockerfile
+
+                -> vi Dockerfile
+
+                    # Base Image
+                    FROM node:20
+
+                    # RUN - Runs Commands
+                    RUN mkdir /backend
+
+                    # WORKDIR - Set Path as Working Directory
+                    WORKDIR /backend
+
+                    # COPY - Copy Code
+                    COPY . /backend
+
+                    # RUN - Build Related Commands
+                    RUN npm install
+                    RUN npx prisma generate
+                    RUN npx prisma db push
+                    RUN npm run build
+
+                    # Start Application
+                    # RUN node build/index.js
+                    CMD ["node","build/index.js"]
+
+
+                -> docker build -t ravi2krishna/lms-be .
+
+                -> docker image ls
+
+                -> docker container run -dt --name lms-be -p 8080:8080 ravi2krishna/lms-be
+
+                -> docker container ls -a 
+
+                -> Verify Backend Status 
+
+                    -> Verify with Browser - http://public-ip:8080/api  
+
+                    -> NOTE: If you get below message, backend deployment is success   
+                    
+                        {"message":"success","mode":"dev"}
+
+                    -> docker push ravi2krishna/lms-be
+
+            -> Steps To Build LMS Frontend Image 
+
+            -> cd ~/lms-v1/webapp/
+
+            -> ls 
+
+            -> vi .env 
+
+                VITE_API_URL=http://public-ip:8080/api
+
+            -> Remove Docker File (existing) 
+                -> rm Dockerfile 
+                -> ls Dockerfile
+
+            -> vi Dockerfile
+
+                # Base Image
+                FROM node:20 AS build
+
+                # RUN - Runs Commands
+                RUN mkdir /frontend
+
+                # WORKDIR - Set Path as Working Directory
+                WORKDIR /frontend
+
+                # COPY - Copy Code
+                COPY . /frontend
+
+                # RUN - Build Related Commands
+                RUN npm install
+                RUN npm run build
+
+                # Deploy Application On NGINX
+                FROM nginx
+
+                # COPY
+                COPY --from=build /frontend/dist /usr/share/nginx/html
+
+            -> docker build -t ravi2krishna/lms-fe . 
+
+            -> docker container run -dt --name lms-fe -p 80:80 ravi2krishna/lms-fe 
+            -> docker container ls -a 
+
+            -> Verify Frontend With Browse Using - http://public-ip
+
+            -> docker push ravi2krishna/lms-fe
+
+
+    -> NOTE: Now To Run LMS Application 
+
+        -> docker container run -dt --name lms-db -e POSTGRES_PASSWORD=Login@123 postgres
+
+        -> docker container run -dt --name lms-be -p 8080:8080 ravi2krishna/lms-be
+
+        -> docker container run -dt --name lms-fe -p 80:80 ravi2krishna/lms-fe
+
+
+    -> Before Project - 2 i.e In Project - 1 
+
+        -> Without Docker, To Build and Deploy Above Project You Took Hours 
+
+        -> Now With Docker, To Build and Deploy Above Project You Took Mins 
+
+
+     
+    -> DevOps is a set of PRACTICES that works towards the 
+    "AUTOMATION" and "INTEGRATION" of the processes between 
+    Software Development (Dev) and IT (Ops) teams, 
+    so that organizations can "BUILD", "TEST" and "DEPLOY" 
+    softwares/applications "FASTER" and more "RELIABLE"
+
+
+    -> Project - 2 
+
+        -> Implement "Acceleration" i.e "FASTER" Deployments Using "Containerization" Practice
+
+
+    -> Project - 3
+
+        -> Implement "RELIABILITY" i.e "ALWAYS RUNNING WITHOUT DOWNTIME" i.e 24 X 7
+        Achieved Using "Orchestration" Practice 
+
