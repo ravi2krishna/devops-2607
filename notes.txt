@@ -2338,3 +2338,244 @@ Class - 20
             -> kubectl delete pod nginx-pod 
 
             -> kubectl get pods 
+
+
+Class - 21
+==========
+
+    -> Representing kubernetes Objects (k8s) using CODE (YAML)
+
+    -> YAML 
+
+        -> YAML is a human-readable data serialization language. 
+        It is commonly used for "configuration files" (k8s) and in applications 
+        where data is being stored or transmitted.
+
+        -> YAML focuses on USER FRIENDLINESS & EASY READABILITY
+
+            -> https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlO2nvPAnbt5BtpPEkAetXCBHjvGdQqp_wFxYgtXxux0jSNU0e9Ceb707S&s=10
+
+        -> NOTE: YAML is used to store information about different k8s object
+        pods, replicasets, deployments etc 
+
+
+    
+    -> YAML is Kubernetes has
+
+            -> Simple Key Values Pairs 
+
+                -> The basic type of entry in a YAML file is of a key value pair. 
+                After the Key and colon there is a space and then the value.
+
+                    -> key: value 
+
+            -> Lists: Multiple Items  
+
+                -> Lists would have a number of items listed under the name of the list. 
+                The elements of the list would start with a -
+
+                    -> Fruits:
+                    - apple 
+                    - banana 
+                    - etc
+
+            -> Dictionaries: Set Of Key Values Pairs 
+
+                -> A more complex type of YAML file would be a Dictionary
+                It consists of key-value pairs.
+
+                -> banana:
+                    calories: 200
+                    fat: 0.5 
+
+        -> NOTE: Every k8s object has 4 Top Level items in yaml script
+
+            -> apiVersion 
+            -> kind 
+            -> metadata 
+            -> spec 
+        
+
+    -> Pod Creation Using YAML 
+
+        -> Create Pod Definition (pod.yaml)
+
+        -> kubectl get pods 
+
+        -> kubectl apply -f pod.yaml 
+
+        -> kubectl get pods 
+
+        -> kubectl describe pod nginx-pod
+
+        -> kubectl exec nginx-pod -- cat /usr/share/nginx/html/index.html 
+
+        -> kubectl delete pod nginx-pod 
+
+        -> kubectl get pods 
+
+        
+        -> NOTE: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#pod-v1-core
+
+            -> Warning:
+                
+                -> It is recommended that users create Pods only through a Controller, and not directly. 
+
+            -> Pods are ephemeral in nature no guarantee of availability
+
+            -> Pods are not designed to run forever 
+
+            -> Pods do not heal or repair themselves 
+
+
+
+    -> Replicaset Object 
+
+        -> Replicaset Object, is often used to guarantee the "availability" of pods  
+
+        -> Replica Set manages pod lifecycle
+
+        -> Replicaset helps you achieve High Availability 
+
+        -> A Kubernetes ReplicaSet (RS) is a core workload controller designed to 
+        maintain a stable set of replica Pods running at any given time. 
+        It acts as a self-healing mechanism that automatically 
+        creates or terminates Pods to guarantee application availability and scaling.
+
+        -> Self-Healing: Automatically replaces crashed, deleted, or failed Pods.
+        
+        -> Guaranteed Availability: Ensures the cluster always has the 
+        exact number of Pods specified. 
+
+        -> https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#replicaset-v1-apps
+
+        -> NOTE: We will discuss about labels in the Service Object 
+
+        -> kubectl get replicasets 
+
+        -> kubectl get pods 
+
+            -> nginx-2vzfn   1/1     Running   0          73s
+
+        -> kubectl apply -f replicaset.yaml
+
+        -> kubectl get replicasets 
+
+        -> kubectl get pods  
+
+        -> kubectl apply -f pod.yaml 
+
+        -> kubectl get pods 
+
+            nginx-pod     1/1     Running   0          6s
+        
+        -> kubectl describe pod nginx-pod
+
+            -> NOTE: There is no controlled by option 
+
+        -> kubectl describe pod nginx-2vzfn 
+
+            -> NOTE: We have Controlled By:  ReplicaSet/nginx
+
+        -> kubectl delete pod nginx-pod
+
+            -> Deleting pod not controlled by ReplicaSet 
+
+        -> kubectl get pods
+
+            -> nginx-2vzfn   1/1     Running   0          16m
+
+        -> kubectl delete pod nginx-2vzfn 
+       
+            -> Deleting pod controlled by ReplicaSet 
+
+        -> kubectl get pods
+
+            -> nginx-qs7rt   1/1     Running   0          5s
+
+        -> NOTE: This behavior confirms, Replicaset Object guarantees "availability" of pods  
+
+        -> https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#replicaset-v1-apps
+
+        -> NOTE:
+
+            -> Warning: In many cases it is recommended to create a "Deployment" instead of ReplicaSet.
+
+    -> NOTE: Above Warning was given, as ReplicaSets Don't ALLOW UPDATES 
+
+    -> Deployment Object 
+
+        -> A deployment provides "updates" for pods and replicasets.
+
+        -> https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#deployment-v1-apps
+
+        -> NOTE: No Warning for Deployment, this is the reason in real world 
+        We never create pods & replicasets directly.
+        We use deployments in real world to manage pods & replicasets.
+
+        -> Learning: 
+
+            -> Pod -> ReplicaSet -> Deployment 
+
+         -> Real world:
+
+            -> Deployment -> ReplicaSet -> Pods 
+
+            -> Deployment(Updates) -> ReplicaSet(Availability) -> Pods(Application)
+
+
+    -> Create Deployment by copying existing ReplicaSet 
+        and just change kind to Deployment  
+
+        -> kubectl get deployments
+        -> kubectl get replicasets
+        -> kubectl get pods
+
+        -> kubectl apply -f deployment.yaml
+
+        -> kubectl get deployments
+        -> kubectl get replicasets
+        -> kubectl get pods
+
+            NAME                    READY   STATUS    RESTARTS   AGE
+            nginx-c475b744d-28zwf   1/1     Running   0          23s
+
+        -> kubectl describe pod <pod-name> (check for controlled by)
+
+        -> kubectl describe rs <rs-name> (check for controlled by)
+
+        -> kubectl exec nginx-c475b744d-28zwf -- ls /usr/share/nginx/html
+
+                50x.html
+                index.html
+
+        -> GOAL: Perform updates, change to login app
+
+        -> Update deployment.yaml image to ravi2krishna/login-2603 
+
+        -> kubectl get pods (check age)
+
+        -> kubectl apply -f deployment.yaml
+
+        -> kubectl get pods (check age)
+
+            NAME                     READY   STATUS    RESTARTS   AGE
+            nginx-59896c58f6-5q4jd   1/1     Running   0          11s
+
+        -> kubectl exec nginx-59896c58f6-5q4jd -- ls /usr/share/nginx/html
+
+                Dockerfile
+                README.md
+                img_avatar2.png
+                index.html
+
+        -> GOAL: Perform updates, Achieved
+
+    -> NOTE: How to access our Login App Now, From Customers point of view ? 
+
+        -> Solution is Service Object 
+
+
+    -> Service Object 
+
+        -> A service is an object that acts as an endpoint, which you use to access the pods.

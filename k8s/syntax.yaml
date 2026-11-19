@@ -1,0 +1,49 @@
+# Means Comment - This Line Will Be Ignored 
+
+# yaml files can have .yaml or .yml as extensions - pod.yaml or pod.yml 
+
+# Simple Key Values Pairs 
+key: value 
+name: ravi 
+course: devops 
+time: 9 
+
+# Lists: Multiple Items  
+courses:
+- devops 
+- aws
+- azure
+- python
+
+# Dictionaries: Set Of Key Values Pairs 
+trainer:
+  name: ravi 
+  course: devops 
+  location: hyderabad
+
+# In Kubernetes Will Have Combined Things 
+email: ravi@gmail.com # key value 
+trainer_profile: # Dictionary 
+  name: ravi
+  location: hyderabad
+  courses: # List 
+  - devops 
+  - aws
+  - python
+
+# Real World Yaml File - pod definition
+apiVersion: v1 # key: value
+kind: Pod # key: value
+metadata: # dictionary 
+  name: nginx
+spec: # dictionary
+  containers: # list 
+  - name: nginx
+    image: nginx:1.14.2
+    ports: # list 
+    - containerPort: 80
+
+ 
+
+
+
