@@ -2579,3 +2579,28 @@ Class - 21
     -> Service Object 
 
         -> A service is an object that acts as an endpoint, which you use to access the pods.
+
+
+Class - 22
+==========
+
+    -> Setup Production Kubernetes Environment 
+
+    -> kubectl get pods 
+
+    -> kubectl get deployments 
+
+    -> aws eks list-clusters 
+
+    -> aws eks update-kubeconfig --name <cluster> --region <region-code>
+
+
+
+
+    -> Labels & Selectors
+
+        -> Labels: Labels are key/value pairs that are attached to objects.  
+
+        -> Selectors: Using a label selector, we can identify a set of objects.
+
+        -> https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_04_labels.svg
